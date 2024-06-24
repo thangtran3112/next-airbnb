@@ -23,6 +23,7 @@ npx prisma init
 ```bash
 npx prisma db push
 npx prisma studio
+npx prisma generate
 ```
 
 - We should only provide a Singleton prisma client in development local server, as Hot Reload would create new clients for every code changes. See [Primsa NextJS best practices](https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices)
