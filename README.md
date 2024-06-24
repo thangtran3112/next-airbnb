@@ -60,3 +60,11 @@ export const GET = handleAuth();
 - Customize Register and Login with our own logo, button and link colors at Kinde `Design` tab. See picture below:
 
 ![Kinde design tab](./images/ChangeLogoAndButtonColors.png)
+
+## Supabase Postgres and Storage
+
+- [Installing Javascript Npm](https://supabase.com/docs/reference/javascript/installing)
+- [Initializing Supabase Client](https://supabase.com/docs/reference/javascript/initializing)
+- Find your Supabase Project URL and Project Public Anon key in your Supabase `Project Settings`
+- Create a Supabase bucket for storing images.
+  ![Supabase Storage Policy](./images/SupabaseBucketPolicy.png)
