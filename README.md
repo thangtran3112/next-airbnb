@@ -68,3 +68,14 @@ export const GET = handleAuth();
 - Find your Supabase Project URL and Project Public Anon key in your Supabase `Project Settings`
 - Create a Supabase bucket for storing images.
   ![Supabase Storage Policy](./images/SupabaseBucketPolicy.png)
+
+## React Leaflet for Maps
+
+- [Setup Leaflet TileLayer](https://react-leaflet.js.org/docs/start-setup/) with `url` and `attribution`:
+
+```tsx
+<TileLayer
+  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+/>
+```
