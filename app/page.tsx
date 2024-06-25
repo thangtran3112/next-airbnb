@@ -3,11 +3,18 @@ import ListingCard from "./components/ListingCard";
 import { MapFilterItems } from "./components/MapFilterItems";
 import prisma from "./lib/db";
 import { SkeletonCard } from "./components/SkeletonCard";
+import { NoItems } from "./components/NoItem";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-type SearchParamsProps = {
+interface SearchParamsProps {
   searchParams?: { filter?: string };
-};
-async function getData({ searchParams }: SearchParamsProps) {
+}
+
+interface UserIdSearchParamsProps extends SearchParamsProps {
+  userId: string | undefined;
+}
+
+async function getHomeData({ userId, searchParams }: UserIdSearchParamsProps) {
   const data = await prisma.home.findMany({
     where: {
       addedCategory: true,
@@ -21,6 +28,11 @@ async function getData({ searchParams }: SearchParamsProps) {
       price: true,
       description: true,
       country: true,
+      Favorite: {
+        where: {
+          userId: userId ?? undefined,
+        },
+      },
     },
   });
 
@@ -44,20 +56,36 @@ const ListItemClassName =
   "grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8";
 
 async function ShowItems({ searchParams }: SearchParamsProps) {
-  const data = await getData({ searchParams });
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  const data = await getHomeData({
+    searchParams: searchParams,
+    userId: user?.id,
+  });
 
   return (
-    <div className={ListItemClassName}>
-      {data.map((item) => (
-        <ListingCard
-          key={item.id}
-          description={item.description as string}
-          imagePath={item.photo as string}
-          price={item.price as number}
-          location={item.country as string}
-        />
-      ))}
-    </div>
+    <>
+      {data.length === 0 ? (
+        <NoItems />
+      ) : (
+        <div className={ListItemClassName}>
+          {data.map((home) => (
+            <ListingCard
+              key={home.id}
+              description={home.description as string}
+              imagePath={home.photo as string}
+              price={home.price as number}
+              location={home.country as string}
+              userId={user?.id}
+              favoriteId={home.Favorite[0]?.id}
+              isInFavoriteList={home.Favorite.length > 0 ? true : false}
+              homeId={home.id}
+              pathName="/"
+            />
+          ))}
+        </div>
+      )}
+    </>
   );
 }
 
