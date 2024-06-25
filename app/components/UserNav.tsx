@@ -52,7 +52,7 @@ export async function UserNav() {
               <Link href="/my-homes">My Listings</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link href="/favourties">My Favourites</Link>
+              <Link href="/favorites">My Favourites</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Link href="/reservations">My Reservations</Link>
