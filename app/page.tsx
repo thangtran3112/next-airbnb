@@ -66,7 +66,10 @@ async function ShowItems({ searchParams }: SearchParamsProps) {
   return (
     <>
       {data.length === 0 ? (
-        <NoItems />
+        <NoItems
+          description="Please check another category or create your own listing!"
+          title="Sorry no listings found for this category ..."
+        />
       ) : (
         <div className={ListItemClassName}>
           {data.map((home) => (
