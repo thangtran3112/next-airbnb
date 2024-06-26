@@ -5,3 +5,7 @@ export const supabase = createClient(
   process.env.SUPABASE_URL as string,
   process.env.SUPABASE_ANON_KEY as string
 );
+
+export function getImageFullUrl(imageName: string | null | undefined) {
+  return `${process.env.SUPABASE_URL}/storage/v1/object/public/images/${imageName}`;
+}

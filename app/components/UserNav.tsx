@@ -16,7 +16,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
 import { createAirbnbHome } from "../actions";
 
-const PlaceholderAvatarSrc =
+export const PlaceholderAvatarSrc =
   "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg";
 export async function UserNav() {
   const { getUser } = getKindeServerSession();

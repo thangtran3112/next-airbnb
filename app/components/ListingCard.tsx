@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useCountries } from "../lib/getCountries";
 import { AddToFavoriteButton, DeleteFromFavoriteButton } from "./SubmitButton";
 import { addToFavorite, deleteFromFavorite } from "../actions";
+import { getImageFullUrl } from "../lib/supabase";
 interface iAppProps {
   imagePath: string;
   description: string;
@@ -33,7 +34,7 @@ export default function ListingCard({
     <div className="flex flex-col">
       <div className="relative h-72">
         <Image
-          src={`https://zkcvlzshthdeudzfissu.supabase.co/storage/v1/object/public/images/${imagePath}`}
+          src={getImageFullUrl(imagePath)}
           alt="Image of House"
           fill
           className="rounded-lg h-full object-cover"
@@ -59,7 +60,7 @@ export default function ListingCard({
           </div>
         )}
       </div>
-      <Link href="/" className="mt-2">
+      <Link href={`/home/${homeId}`} className="mt-2">
         <h3 className="font-medium text-base">
           {country?.flag} {country?.label} /{country?.region}
         </h3>
