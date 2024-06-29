@@ -3,6 +3,7 @@ import prisma from "../lib/db";
 import { redirect } from "next/navigation";
 import { NoItems } from "../components/NoItem";
 import ListingCard from "../components/ListingCard";
+import { ListingCardLayout } from "../components/ListingCardsLayout";
 
 async function getFavoritesData(userId: string) {
   const data = await prisma.favorite.findMany({
@@ -44,7 +45,7 @@ export default async function FavoritesRoute() {
           description="Please add your favorites, so you can see them here!"
         />
       ) : (
-        <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-8 mt-8">
+        <ListingCardLayout>
           {data.map((item) => (
             <ListingCard
               key={item.Home?.id as string}
@@ -61,7 +62,7 @@ export default async function FavoritesRoute() {
               pathName="/favorites"
             />
           ))}
-        </div>
+        </ListingCardLayout>
       )}
     </section>
   );
