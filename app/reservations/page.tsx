@@ -3,6 +3,7 @@ import ListingCard from "../components/ListingCard";
 import { NoItems } from "../components/NoItem";
 import prisma from "../lib/db";
 import { redirect } from "next/navigation";
+import { ListingCardLayout } from "../components/ListingCardsLayout";
 
 async function getData(userId: string) {
   const data = await prisma.reservation.findMany({
@@ -49,7 +50,7 @@ export default async function ReservationsRoute() {
           description="Please book your Reservation, so you can see them here!"
         />
       ) : (
-        <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-8 mt-8">
+        <ListingCardLayout>
           {data.map((item) => (
             <ListingCard
               key={item.Home?.id as string}
@@ -66,7 +67,7 @@ export default async function ReservationsRoute() {
               pathName="/favorites"
             />
           ))}
-        </div>
+        </ListingCardLayout>
       )}
     </section>
   );

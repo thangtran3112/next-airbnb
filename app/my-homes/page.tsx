@@ -3,6 +3,7 @@ import prisma from "../lib/db";
 import { redirect } from "next/navigation";
 import { NoItems } from "../components/NoItem";
 import ListingCard from "../components/ListingCard";
+import { ListingCardLayout } from "../components/ListingCardsLayout";
 
 async function getData(userId: string) {
   const data = await prisma.home.findMany({
@@ -49,7 +50,7 @@ export default async function MyHomes() {
           description="Please list your homes on Airbnb, so you can see them here!"
         />
       ) : (
-        <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-8 mt-8">
+        <ListingCardLayout>
           {homeData.map((item) => (
             <ListingCard
               key={item.id}
@@ -64,7 +65,7 @@ export default async function MyHomes() {
               pathName="/my-homes"
             />
           ))}
-        </div>
+        </ListingCardLayout>
       )}
     </section>
   );

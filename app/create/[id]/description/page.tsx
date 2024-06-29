@@ -1,6 +1,7 @@
 import { createDescription } from "@/app/actions";
 import { Counter } from "@/app/components/Counter";
 import { CreationBottomBar } from "@/app/components/CreationButtomBar";
+import { FeatureCounterCard } from "@/app/components/FeatureCounterCard";
 import { Card, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -58,47 +59,29 @@ export default function DescriptionPage({
 
           {/* Guest Cards */}
           <Card>
-            <CardHeader className="flex flex-col gap-y-5">
-              <div className="flex items-center justify-between">
-                <div className="flex flex-col">
-                  <h3 className="font-medium underline">Guests</h3>
-                  <p className="text-muted-foreground text-sm">
-                    How many guests do you want?
-                  </p>
-                </div>
-                <Counter name="guest" />
-              </div>
-            </CardHeader>
+            <FeatureCounterCard
+              featureName="Guests"
+              question="How many guests do you want?"
+              counterInputName="guest"
+            />
           </Card>
 
           {/* Room Cards */}
           <Card>
-            <CardHeader className="flex flex-col gap-y-5">
-              <div className="flex items-center justify-between">
-                <div className="flex flex-col">
-                  <h3 className="font-medium underline">Rooms</h3>
-                  <p className="text-muted-foreground text-sm">
-                    How many rooms do you have?
-                  </p>
-                </div>
-                <Counter name="room" />
-              </div>
-            </CardHeader>
+            <FeatureCounterCard
+              featureName="Rooms"
+              question="How many rooms do you have?"
+              counterInputName="room"
+            />
           </Card>
 
           {/* Bathroom Cards */}
           <Card>
-            <CardHeader className="flex flex-col gap-y-5">
-              <div className="flex items-center justify-between">
-                <div className="flex flex-col">
-                  <h3 className="font-medium underline">Bathrooms</h3>
-                  <p className="text-muted-foreground text-sm">
-                    How many bathrooms do you want?
-                  </p>
-                </div>
-                <Counter name="bathroom" />
-              </div>
-            </CardHeader>
+            <FeatureCounterCard
+              featureName="Bathrooms"
+              question="How many bathrooms do you want?"
+              counterInputName="bathroom"
+            />
           </Card>
         </div>
 
