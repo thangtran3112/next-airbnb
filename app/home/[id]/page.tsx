@@ -1,13 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
+import { createReservation } from "@/app/actions";
 import { CategoryShowcase } from "@/app/components/CategoryShowcase";
 import { HomeMap } from "@/app/components/HomeMap";
 import { SelectCalendar } from "@/app/components/SelectCalendar";
+import { ReservationSubmitButton } from "@/app/components/SubmitButton";
 import { PlaceholderAvatarSrc } from "@/app/components/UserNav";
 import prisma from "@/app/lib/db";
 import { useCountries } from "@/app/lib/getCountries";
 import { getImageFullUrl } from "@/app/lib/supabase";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Image from "next/image";
+import Link from "next/link";
 
 async function getData(homeId: string) {
   const data = await prisma.home.findUnique({
@@ -24,6 +29,11 @@ async function getData(homeId: string) {
       price: true,
       title: true,
       country: true,
+      Reservation: {
+        where: {
+          homeId: homeId,
+        },
+      },
       User: {
         select: {
           profileImage: true,
@@ -43,6 +53,9 @@ export default async function HomeRoute({
   const data = await getData(params.id);
   const { getCountryByValue } = useCountries();
   const country = getCountryByValue(data?.country as string);
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
   return (
     <div className="w-[75%] mx-auto mt-10 mb-12">
       <h1 className="font-medium text-2xl mb-5">{data?.title}</h1>
@@ -94,7 +107,19 @@ export default async function HomeRoute({
 
           <HomeMap locationValue={country?.value as string} />
         </div>
-        <SelectCalendar />
+        <form action={createReservation}>
+          <input type="hidden" name="homeId" value={params.id} />
+          <input type="hidden" name="userId" value={user?.id} />
+          <SelectCalendar reservations={data?.Reservation} />
+
+          {user?.id ? (
+            <ReservationSubmitButton />
+          ) : (
+            <Button className="w-full" asChild>
+              <Link href="/api/auth/login">Login to Book</Link>
+            </Button>
+          )}
+        </form>
       </div>
     </div>
   );
