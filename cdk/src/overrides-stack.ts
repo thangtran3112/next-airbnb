@@ -14,7 +14,7 @@ export class OverridesStack extends Stack {
     super(scope, id, props);
 
     const nextjs = new Nextjs(this, "nextjs", {
-      nextjsPath: "./app",
+      nextjsPath: "../webapp",
       buildCommand: "npx open-next@^2 build",
       // skipBuild: true,
       overrides: {
@@ -30,7 +30,7 @@ export class OverridesStack extends Stack {
         },
         nextjsBucketDeployment: {
           functionProps: {
-            memorySize: 512,
+            memorySize: 1024,
           },
         },
         nextjsDistribution: {

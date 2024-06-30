@@ -3,6 +3,12 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextResponse } from "next/server";
 import { unstable_noStore as noStore } from "next/cache";
 
+/** This part may be overkill, as we only use noStore() on fetch data */
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const fetchCache = "force-no-store";
+export const revalidate = 0;
+
 export async function GET() {
   noStore();
   const { getUser } = getKindeServerSession();

@@ -30,7 +30,7 @@ npx prisma generate
 - Read [Prisma Supabase Integration](https://supabase.com/partners/integrations/prisma)
 - We must use `DATABASE_URL` in `Transaction Mode`, while `DIRECT_URL` is in `Session Mode`. For `DATABASE_URL` connection string, we need to attach `?pgbouncer=true&connection_limit=1` to it, as we will use serverless hosting.
 - See the picture below on how to find Supabase connection strings for `DATABASE_URL` and `DIRECT_URL`:
-  ![Supabase connection strings](./images/SupabasePrismaConnections.png)
+  ![Supabase connection strings](../images/SupabasePrismaConnections.png)
 
 ## Kinde installations
 
@@ -53,16 +53,16 @@ export const GET = handleAuth();
 ```
 
 - Important: for Cloud deployment, make sure you set correct Callback URLs in Kinde.
-  ![Production Callback URLs](./images/ProductionKindeCallbackUrl.png)
+  ![Production Callback URLs](../images/ProductionKindeCallbackUrl.png)
 
 - See example of how to handle auth with Kinde at [Kinde NextJS SDK Authentication](https://docs.kinde.com/developer-tools/sdks/backend/nextjs-sdk/#authentication)
 
 - Create `.env` file and fill in domain, clintId and clientSecret. See picture below:
-  ![Kinde domain and app keys](./images/GetKindeAppKeys.png)
+  ![Kinde domain and app keys](../images/GetKindeAppKeys.png)
 
 - Customize Register and Login with our own logo, button and link colors at Kinde `Design` tab. See picture below:
 
-![Kinde design tab](./images/ChangeLogoAndButtonColors.png)
+![Kinde design tab](../images/ChangeLogoAndButtonColors.png)
 
 ## Supabase Postgres and Storage
 
@@ -70,7 +70,7 @@ export const GET = handleAuth();
 - [Initializing Supabase Client](https://supabase.com/docs/reference/javascript/initializing)
 - Find your Supabase Project URL and Project Public Anon key in your Supabase `Project Settings`
 - Create a Supabase bucket for storing images.
-  ![Supabase Storage Policy](./images/SupabaseBucketPolicy.png)
+  ![Supabase Storage Policy](../images/SupabaseBucketPolicy.png)
 
 ## React Leaflet for Maps
 
