@@ -5,6 +5,7 @@ import prisma from "./lib/db";
 import { SkeletonCard } from "./components/SkeletonCard";
 import { NoItems } from "./components/NoItem";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { unstable_noStore as noStore } from "next/cache";
 
 interface SearchParamsProps {
   searchParams?: {
@@ -21,6 +22,7 @@ interface UserIdSearchParamsProps extends SearchParamsProps {
 }
 
 async function getHomeData({ userId, searchParams }: UserIdSearchParamsProps) {
+  noStore(); //do not cache
   const data = await prisma.home.findMany({
     where: {
       addedCategory: true,
