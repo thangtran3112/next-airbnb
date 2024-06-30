@@ -9,7 +9,7 @@ export class AppRouterStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const nextjs = new Nextjs(this, "nextjs", {
+    const nextjs = new Nextjs(this, "app-next-west", {
       nextjsPath: "../webapp",
       // buildCommand: "npx open-next@^2 build",
       // skipBuild: true,
