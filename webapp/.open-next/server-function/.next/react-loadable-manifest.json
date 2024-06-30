@@ -1,0 +1,18 @@
+{
+  "app/components/HomeMap.tsx -> @/app/components/Map": {
+    "id": 52308,
+    "files": [
+      "static/css/e5457baccd0818a1.css",
+      "static/chunks/d0deef33-6f4a3e2d3306ab2a.js",
+      "static/chunks/308.79c4ed78fcd6baa9.js"
+    ]
+  },
+  "app/create/[id]/address/page.tsx -> @/app/components/Map": {
+    "id": 52308,
+    "files": [
+      "static/css/e5457baccd0818a1.css",
+      "static/chunks/d0deef33-6f4a3e2d3306ab2a.js",
+      "static/chunks/308.79c4ed78fcd6baa9.js"
+    ]
+  }
+}

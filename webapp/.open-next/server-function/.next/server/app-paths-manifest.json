@@ -1,0 +1,14 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/my-homes/page": "app/my-homes/page.js",
+  "/favorites/page": "app/favorites/page.js",
+  "/page": "app/page.js",
+  "/home/[id]/page": "app/home/[id]/page.js",
+  "/reservations/page": "app/reservations/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/api/auth/[kindeAuth]/route": "app/api/auth/[kindeAuth]/route.js",
+  "/api/auth/creation/route": "app/api/auth/creation/route.js",
+  "/create/[id]/structure/page": "app/create/[id]/structure/page.js",
+  "/create/[id]/address/page": "app/create/[id]/address/page.js",
+  "/create/[id]/description/page": "app/create/[id]/description/page.js"
+}
