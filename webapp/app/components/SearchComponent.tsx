@@ -17,8 +17,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SearchIcon } from "lucide-react";
-import { useState } from "react";
+import { Cross, CrossIcon, SearchIcon } from "lucide-react";
+import { ChangeEvent, useState } from "react";
 import { useCountries } from "../lib/getCountries";
 import { HomeMap } from "./HomeMap";
 import { Button } from "@/components/ui/button";
@@ -26,11 +26,25 @@ import { CreationSubmit } from "./SubmitButton";
 import { FeatureCounterCard } from "./FeatureCounterCard";
 import { Card } from "@/components/ui/card";
 import { QueryParams } from "../lib/constant";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+interface SearchModalProps {
+  countryDesc?: string;
+  guests?: number;
+}
 
 export function SearchModalComponent() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { getAllCountries, getCountryByValue } = useCountries();
+
+  const guests = searchParams.get(QueryParams.guests);
+  const countryValue = searchParams.get(QueryParams.country);
+  const country = countryValue ? getCountryByValue(countryValue) : undefined;
+
   const [step, setStep] = useState(1);
   const [locationValue, setLocationValue] = useState("");
-  const { getAllCountries } = useCountries();
 
   function SubmitButtonLocal() {
     if (step === 1) {
@@ -44,16 +58,43 @@ export function SearchModalComponent() {
     }
   }
 
+  //see more here https://github.com/vercel/next.js/discussions/47583
+  function clearAllSearchParams(event: ChangeEvent<HTMLSelectElement>) {
+    event.preventDefault();
+    // now you got a read/write object
+    const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
+
+    current.delete(QueryParams.country);
+    current.delete(QueryParams.guests);
+    current.delete(QueryParams.rooms);
+    current.delete(QueryParams.bathrooms);
+
+    const query = "";
+
+    router.push(`${pathname}${query}`);
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="rounded-full py-2 px-5 border flex items-center cursor-pointer">
-          <div className="flex h-full divide-x font-medium">
-            <p className="px-4">Anywhere</p>
-            <p className="px-4">Any Week</p>
-            <p className="px-4">Add Guests</p>
+        <div className="flex flex-col">
+          <div className="rounded-full py-2 px-2 border flex items-center cursor-pointer">
+            <div className="flex h-full divide-x font-medium text-sm">
+              <p className="px-2">
+                {country ? `${country.value} ${country.flag}` : "Any where"}
+              </p>
+              <p className="px-2">Any Week</p>
+              <p className="px-2">
+                {guests && Number(guests) > 0
+                  ? `${guests} Guests+`
+                  : "Add guests"}
+              </p>
+            </div>
+            <SearchIcon className="bg-primary text-white p-1 h-8 w-8 rounded-full" />
+            <Button variant="link" size="sm" onClick={clearAllSearchParams}>
+              <span className="text-sm underline">Clear</span>
+            </Button>
           </div>
-          <SearchIcon className="bg-primary text-white p-1 h-8 w-8 rounded-full" />
         </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

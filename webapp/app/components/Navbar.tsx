@@ -18,7 +18,7 @@ const Navbar = () => {
           <Image
             src={MobileLogo}
             alt={"Mobile Logo"}
-            className="w-12 block lg:hidden"
+            className="w-12 hidden sm:block lg:hidden xl:hidden"
           />
         </Link>
         <SearchModalComponent />
