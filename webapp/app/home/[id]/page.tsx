@@ -94,9 +94,9 @@ export default async function HomeRoute({
           <h3 className="text-xl font-medium">
             {country?.flag} {country?.label} / {country?.region}
           </h3>
-          <div className="flex text-muted-foreground gap-x-2">
-            <p>{data?.guests}-Guests</p> * <p>{data?.bedrooms}-Bedrooms</p> *{" "}
-            <p>{data?.bathrooms}-Bathrooms</p>
+          <div className="flex text-sm text-muted-foreground gap-x-2">
+            <p>{data?.guests} Guests</p> * <p>{data?.bedrooms} Beds</p> *{" "}
+            <p>{data?.bathrooms} Baths</p>
           </div>
           <div className="flex item-centers mt-6">
             <img
