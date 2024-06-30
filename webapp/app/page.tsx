@@ -6,6 +6,7 @@ import { SkeletonCard } from "./components/SkeletonCard";
 import { NoItems } from "./components/NoItem";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { unstable_noStore as noStore } from "next/cache";
+import { ListingCardLayout } from "./components/ListingCardsLayout";
 
 interface SearchParamsProps {
   searchParams?: {
@@ -83,7 +84,7 @@ async function ShowItems({ searchParams }: SearchParamsProps) {
           title="Sorry no listings found for this category ..."
         />
       ) : (
-        <div className={ListItemClassName}>
+        <ListingCardLayout>
           {data.map((home) => (
             <ListingCard
               key={home.id}
@@ -98,7 +99,7 @@ async function ShowItems({ searchParams }: SearchParamsProps) {
               pathName="/"
             />
           ))}
-        </div>
+        </ListingCardLayout>
       )}
     </>
   );
@@ -106,13 +107,13 @@ async function ShowItems({ searchParams }: SearchParamsProps) {
 
 function SkeletonLoading() {
   return (
-    <div className={ListItemClassName}>
+    <ListingCardLayout>
       <SkeletonCard />
       <SkeletonCard />
       <SkeletonCard />
       <SkeletonCard />
       <SkeletonCard />
       <SkeletonCard />
-    </div>
+    </ListingCardLayout>
   );
 }
