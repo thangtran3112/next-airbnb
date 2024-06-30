@@ -31,9 +31,9 @@ async function getHomeData({ userId, searchParams }: UserIdSearchParamsProps) {
       addedLocation: true,
       categoryName: searchParams?.filter ?? undefined, //if filter is not given
       country: searchParams?.country ?? undefined,
-      guests: searchParams?.guests ?? undefined,
-      bathrooms: searchParams?.bathrooms ?? undefined,
-      bedrooms: searchParams?.rooms ?? undefined,
+      guests: { gte: Number(searchParams?.guests ?? 0) },
+      bathrooms: { gte: Number(searchParams?.bathrooms ?? 0) },
+      bedrooms: { gte: Number(searchParams?.rooms ?? 0) },
     },
     select: {
       photo: true,
