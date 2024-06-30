@@ -101,21 +101,21 @@ export function SearchModalComponent() {
                 {/* Guest Cards */}
                 <FeatureCounterCard
                   featureName="Guests"
-                  question="How many guests do you want?"
+                  question="How many guests do you have?"
                   counterInputName={QueryParams.guests}
                 />
 
                 {/* Room Cards */}
                 <FeatureCounterCard
                   featureName="Rooms"
-                  question="How many rooms do you have?"
+                  question="Minimum number of bedrooms?"
                   counterInputName={QueryParams.rooms}
                 />
 
                 {/* Bathroom Cards */}
                 <FeatureCounterCard
                   featureName="Bathrooms"
-                  question="How many bathrooms do you want?"
+                  question="Minimum number of bathrooms?"
                   counterInputName={QueryParams.bathrooms}
                 />
               </Card>
