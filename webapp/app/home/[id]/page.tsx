@@ -60,7 +60,10 @@ export default async function HomeRoute({
 
   function FormCreateReservation() {
     return (
-      <form action={createReservation} className="flex flex-col max-w-[400px]">
+      <form
+        action={createReservation}
+        className="flex flex-col max-w-[400px] lg:scale-[1.2] lg:mt-6"
+      >
         <input type="hidden" name="homeId" value={params.id} />
         <input type="hidden" name="userId" value={user?.id} />
         <SelectCalendar reservations={data?.Reservation} />
@@ -68,7 +71,7 @@ export default async function HomeRoute({
         {user?.id ? (
           <ReservationSubmitButton />
         ) : (
-          <Button className="w-full" asChild>
+          <Button className="w-full lg:scale-90" asChild>
             <Link href="/api/auth/login">Login to Book</Link>
           </Button>
         )}
@@ -79,7 +82,7 @@ export default async function HomeRoute({
   return (
     <div className="w-[75%] mx-auto mt-10 mb-12">
       <h1 className="font-medium text-2xl mb-5">{data?.title}</h1>
-      <div className="relative h-[550px]">
+      <div className="relative h-[550px] max-w-5xl">
         {/* you can only use `fill` Image attribute in next/image with a relative parent element */}
         <Image
           alt="Image of Home"
