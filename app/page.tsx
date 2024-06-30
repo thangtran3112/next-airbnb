@@ -7,7 +7,13 @@ import { NoItems } from "./components/NoItem";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 interface SearchParamsProps {
-  searchParams?: { filter?: string };
+  searchParams?: {
+    filter?: string;
+    country?: string;
+    guests?: string; // as QueryParams
+    rooms?: string; // as QueryParams
+    bathrooms?: string; // as QueryParams
+  };
 }
 
 interface UserIdSearchParamsProps extends SearchParamsProps {
@@ -21,6 +27,10 @@ async function getHomeData({ userId, searchParams }: UserIdSearchParamsProps) {
       addedDescription: true,
       addedLocation: true,
       categoryName: searchParams?.filter ?? undefined, //if filter is not given
+      country: searchParams?.country ?? undefined,
+      guests: searchParams?.guests ?? undefined,
+      bathrooms: searchParams?.bathrooms ?? undefined,
+      bedrooms: searchParams?.rooms ?? undefined,
     },
     select: {
       photo: true,

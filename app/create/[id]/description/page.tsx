@@ -2,6 +2,7 @@ import { createDescription } from "@/app/actions";
 import { Counter } from "@/app/components/Counter";
 import { CreationBottomBar } from "@/app/components/CreationButtomBar";
 import { FeatureCounterCard } from "@/app/components/FeatureCounterCard";
+import { QueryParams } from "@/app/lib/constant";
 import { Card, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -62,7 +63,7 @@ export default function DescriptionPage({
             <FeatureCounterCard
               featureName="Guests"
               question="How many guests do you want?"
-              counterInputName="guest"
+              counterInputName={QueryParams.guests}
             />
           </Card>
 
@@ -71,7 +72,7 @@ export default function DescriptionPage({
             <FeatureCounterCard
               featureName="Rooms"
               question="How many rooms do you have?"
-              counterInputName="room"
+              counterInputName={QueryParams.rooms}
             />
           </Card>
 
@@ -80,7 +81,7 @@ export default function DescriptionPage({
             <FeatureCounterCard
               featureName="Bathrooms"
               question="How many bathrooms do you want?"
-              counterInputName="bathroom"
+              counterInputName={QueryParams.bathrooms}
             />
           </Card>
         </div>
