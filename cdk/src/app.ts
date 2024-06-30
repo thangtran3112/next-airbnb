@@ -6,7 +6,7 @@ import { OverridesStack } from "./overrides-stack";
 const app = new cdk.App();
 new AppRouterStack(app, "app-airbnb-west", {
   env: {
-    account: "975050381329",
+    account: "654654352356",
     region: "us-west-2",
   },
 }); // ar = app router
