@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { CreationSubmit } from "./SubmitButton";
 import { FeatureCounterCard } from "./FeatureCounterCard";
 import { Card } from "@/components/ui/card";
+import { QueryParams } from "../lib/constant";
 
 export function SearchModalComponent() {
   const [step, setStep] = useState(1);
@@ -101,21 +102,21 @@ export function SearchModalComponent() {
                 <FeatureCounterCard
                   featureName="Guests"
                   question="How many guests do you want?"
-                  counterInputName="guest"
+                  counterInputName={QueryParams.guests}
                 />
 
                 {/* Room Cards */}
                 <FeatureCounterCard
                   featureName="Rooms"
                   question="How many rooms do you have?"
-                  counterInputName="room"
+                  counterInputName={QueryParams.rooms}
                 />
 
                 {/* Bathroom Cards */}
                 <FeatureCounterCard
                   featureName="Bathrooms"
                   question="How many bathrooms do you want?"
-                  counterInputName="bathroom"
+                  counterInputName={QueryParams.bathrooms}
                 />
               </Card>
             </>

@@ -56,6 +56,24 @@ export default async function HomeRoute({
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
+  function FormCreateReservation() {
+    return (
+      <form action={createReservation} className="flex flex-col max-w-[400px]">
+        <input type="hidden" name="homeId" value={params.id} />
+        <input type="hidden" name="userId" value={user?.id} />
+        <SelectCalendar reservations={data?.Reservation} />
+
+        {user?.id ? (
+          <ReservationSubmitButton />
+        ) : (
+          <Button className="w-full" asChild>
+            <Link href="/api/auth/login">Login to Book</Link>
+          </Button>
+        )}
+      </form>
+    );
+  }
+
   return (
     <div className="w-[75%] mx-auto mt-10 mb-12">
       <h1 className="font-medium text-2xl mb-5">{data?.title}</h1>
@@ -65,12 +83,12 @@ export default async function HomeRoute({
           alt="Image of Home"
           src={getImageFullUrl(data?.photo)}
           fill
-          className="rounded-lg h-full object-cover w-full"
+          className="rounded-lg h-full object-cover w-full lg:w-2/3"
         />
       </div>
 
       <div className="flex justify-between gap-x-24 mt-8">
-        <div className="w-2/3">
+        <div className="w-full lg:w-2/3">
           <h3 className="text-xl font-medium">
             {country?.flag} {country?.label} / {country?.region}
           </h3>
@@ -105,21 +123,17 @@ export default async function HomeRoute({
 
           <Separator className="my-7" />
 
+          <div className="block md:hidden lg:hidden">
+            <FormCreateReservation />
+          </div>
+
+          <Separator className="my-7" />
+
           <HomeMap locationValue={country?.value as string} />
         </div>
-        <form action={createReservation}>
-          <input type="hidden" name="homeId" value={params.id} />
-          <input type="hidden" name="userId" value={user?.id} />
-          <SelectCalendar reservations={data?.Reservation} />
-
-          {user?.id ? (
-            <ReservationSubmitButton />
-          ) : (
-            <Button className="w-full" asChild>
-              <Link href="/api/auth/login">Login to Book</Link>
-            </Button>
-          )}
-        </form>
+        <div className="w-full hidden md:block lg:block">
+          <FormCreateReservation />
+        </div>
       </div>
     </div>
   );

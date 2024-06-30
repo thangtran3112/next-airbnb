@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import prisma from "./lib/db";
 import { supabase } from "./lib/supabase";
 import { revalidatePath } from "next/cache";
+import { QueryParams } from "./lib/constant";
 
 export async function createAirbnbHome({ userId }: { userId: string }) {
   const data = await prisma.home.findFirst({
@@ -82,9 +83,9 @@ export async function createDescription(formData: FormData) {
   const imageFile = formData.get("image") as File;
   const homeId = formData.get("homeId") as string;
 
-  const guestsNumber = formData.get("guest") as string;
-  const roomsNumber = formData.get("room") as string;
-  const bathroomsNumber = formData.get("bathroom") as string;
+  const guestsNumber = formData.get(QueryParams.guests) as string;
+  const roomsNumber = formData.get(QueryParams.rooms) as string;
+  const bathroomsNumber = formData.get(QueryParams.bathrooms) as string;
 
   const { data: imageData } = await supabase.storage
     .from("images")
