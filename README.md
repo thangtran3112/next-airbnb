@@ -52,6 +52,9 @@ import { handleAuth } from "@kinde-oss/kinde-auth-nextjs/server";
 export const GET = handleAuth();
 ```
 
+- Important: for Cloud deployment, make sure you set correct Callback URLs in Kinde.
+  ![Production Callback URLs](./images/ProductionKindeCallbackUrl.png)
+
 - See example of how to handle auth with Kinde at [Kinde NextJS SDK Authentication](https://docs.kinde.com/developer-tools/sdks/backend/nextjs-sdk/#authentication)
 
 - Create `.env` file and fill in domain, clintId and clientSecret. See picture below:
