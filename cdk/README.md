@@ -55,6 +55,7 @@ generator client {
 
 - Add `PRISMA_CLI_BINARY_TARGETS=native,rhel-openssl-1.0.x` to Lambda environment.
 - Also, we may still need to copy `node_modules/.prisma/client` to `.open-next` build, if it does not generate `libquery_engine-linux-arm64-openssl-3.0.x.so.node`
+  ![Lambda Environment Variables](../images/LambdaEnvironment.png)
 
 ## Important Note on performance:
 
