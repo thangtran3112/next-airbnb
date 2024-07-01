@@ -4,6 +4,7 @@ import DesktopLogo from "../../public/airbnb-desktop.png";
 import MobileLogo from "../../public/airbnb-mobile.webp";
 import UserNav from "./UserNav";
 import { SearchModalComponent } from "./SearchComponent";
+import { Suspense } from "react";
 
 const Navbar = () => {
   return (
@@ -21,7 +22,9 @@ const Navbar = () => {
             className="w-12 hidden sm:block lg:hidden xl:hidden"
           />
         </Link>
-        <SearchModalComponent />
+        <Suspense>
+          <SearchModalComponent />
+        </Suspense>
         <UserNav />
       </div>
     </nav>

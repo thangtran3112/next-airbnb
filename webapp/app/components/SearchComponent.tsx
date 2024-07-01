@@ -42,6 +42,9 @@ export function SearchModalComponent() {
   const guests = searchParams.get(QueryParams.guests);
   const countryValue = searchParams.get(QueryParams.country);
   const country = countryValue ? getCountryByValue(countryValue) : undefined;
+  const rooms = searchParams.get(QueryParams.rooms);
+  const bathrooms = searchParams.get(QueryParams.bathrooms);
+  const isFiltersPresented = country || guests || rooms || bathrooms;
 
   const [step, setStep] = useState(1);
   const [locationValue, setLocationValue] = useState("");
@@ -59,7 +62,7 @@ export function SearchModalComponent() {
   }
 
   //see more here https://github.com/vercel/next.js/discussions/47583
-  function clearAllSearchParams(event: ChangeEvent<HTMLSelectElement>) {
+  function clearAllSearchParams(event: any) {
     event.preventDefault();
     // now you got a read/write object
     const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
@@ -91,9 +94,15 @@ export function SearchModalComponent() {
               </p>
             </div>
             <SearchIcon className="bg-primary text-white p-1 h-8 w-8 rounded-full" />
-            <Button variant="link" size="sm" onClick={clearAllSearchParams}>
-              <span className="text-sm underline">Clear</span>
-            </Button>
+            {isFiltersPresented && (
+              <Button
+                variant="link"
+                size="sm"
+                onClick={(e) => clearAllSearchParams(e)}
+              >
+                <span className="text-sm underline">Clear</span>
+              </Button>
+            )}
           </div>
         </div>
       </DialogTrigger>
