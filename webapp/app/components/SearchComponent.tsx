@@ -92,7 +92,7 @@ export function SearchModalComponent() {
       <DialogTrigger asChild>
         <div className="flex flex-col">
           <div className="rounded-full py-1 px-2 border flex items-center cursor-pointer">
-            <div className="flex h-full divide-x font-medium text-sm">
+            <div className="flex h-full divide-x font-medium text-base sm:text-xl">
               <p className="px-2">
                 {country ? `${country.value} ${country.flag}` : "Any where"}
               </p>
@@ -103,7 +103,7 @@ export function SearchModalComponent() {
                   : "Add guests"}
               </p>
             </div>
-            <SearchIcon className="bg-primary text-white p-1 h-6 w-6 rounded-full" />
+            <SearchIcon className="bg-primary text-white p-1 h-6 w-6 sm:h-8 sm:w-8 rounded-full" />
             {isFiltersPresented && (
               // We need to use the form to load the url with no params
               <form>
