@@ -37,6 +37,7 @@ export default function ListingCard({
           src={getImageFullUrl(imagePath)}
           alt="Image of House"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 30vw"
           className="rounded-lg h-full object-cover"
         />
 
