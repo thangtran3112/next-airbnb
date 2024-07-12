@@ -10,7 +10,7 @@ export function SelectedCategory() {
     undefined
   );
   return (
-    <div className="grid grid-cols-4 gap-8 mt-10 w-3/5 mx-auto mb-36">
+    <div className="grid grid-cols-2 gap-8 mt-10 w-3/5 mx-auto mb-36 sm:grid-cols-3 md:grid-cols-4">
       <input
         type="hidden"
         name="categoryName"
@@ -30,9 +30,9 @@ export function SelectedCategory() {
                 alt={item.name}
                 height={32}
                 width={32}
-                className="w-8 h-8"
+                className="w-6 h-6 md:w-8 md:h-8"
               />
-              <h3 className="font-medium">{item.title}</h3>
+              <h3 className="font-medium text-sm sm:text-base">{item.title}</h3>
             </CardHeader>
           </Card>
         </div>
