@@ -33,14 +33,15 @@ export default function ListingCard({
   return (
     <div className="flex flex-col">
       <div className="relative h-72">
-        <Image
-          src={getImageFullUrl(imagePath)}
-          alt="Image of House"
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 30vw"
-          className="rounded-lg h-full object-cover"
-        />
-
+        <Link href={`/home/${homeId}`}>
+          <Image
+            src={getImageFullUrl(imagePath)}
+            alt="Image of House"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 30vw"
+            className="rounded-lg h-full object-cover"
+          />
+        </Link>
         {userId && (
           <div className="z-10 absolute top-2 right-2">
             {isInFavoriteList ? (
