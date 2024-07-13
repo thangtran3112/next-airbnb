@@ -88,8 +88,8 @@ export default async function HomeRoute({
           alt="Image of Home"
           src={getImageFullUrl(data?.photo)}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-          className="rounded-lg h-full object-cover w-full lg:w-2/3"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 90vw"
+          className="rounded-lg h-full object-cover w-full lg:w-3/4"
         />
       </div>
 
