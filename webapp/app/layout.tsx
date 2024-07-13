@@ -18,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        {children}
+        <div aria-hidden="true" className="max-w-[1600px] mx-auto">
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );
