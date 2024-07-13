@@ -8,7 +8,7 @@ import { Suspense } from "react";
 
 const Navbar = () => {
   return (
-    <nav className="w-full border-b">
+    <nav className="w-full border-b xl:max-w-[1600px]">
       <div className="flex items-center justify-between container mx-auto px-2 py-4 sm:px-6 sm:py-5 md:px-10 lg:px-10 ">
         <Link href="/">
           <Image
